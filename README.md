@@ -1,2 +1,2 @@
-# 19thED-DMS-v1-prod
-Final project of admin dashboard, improved features, functions and performance
+# 19thepiscopaldistrict
+Admin Dashboard for the 19th Episcopal District.
