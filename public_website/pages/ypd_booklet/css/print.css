@@ -1,0 +1,122 @@
+/* print.css — shared by the on-screen preview and the actual printed/PDF output */
+
+:root {
+  --ink: #1b2e22;
+  --ink-soft: #33473a;
+  --leaf: #2f5233;
+  --leaf-deep: #1f3823;
+  --gold: #b08d57;
+  --parchment-dark: #e8dfc9;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-utility: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #ddd;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--leaf-deep);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+.toolbar button {
+  font-family: var(--font-utility);
+  background: var(--gold);
+  color: var(--leaf-deep);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toolbar a { color: #fff; font-family: var(--font-utility); font-size: 0.85rem; }
+
+.sheet {
+  background: #fff;
+  width: 8.5in;
+  min-height: 11in;
+  margin: 1.5rem auto;
+  padding: 1in 0.85in;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+}
+
+.sheet.cover {
+  background: linear-gradient(160deg, var(--leaf-deep), var(--leaf) 60%, var(--leaf-deep));
+  color: #fbf9f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sheet.cover .cover-photo {
+  width: 100%;
+  height: 4.2in;
+  border-radius: 3px;
+  border: 1px solid rgba(203, 168, 105, 0.55);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1.6rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet.cover .district-label { font-family: var(--font-utility); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.8rem; color: #cba869; margin-bottom: 1rem; }
+.sheet.cover h1 { font-family: var(--font-display); font-size: 2.4rem; margin: 0 0 0.75rem; }
+.sheet.cover .subtitle { font-style: italic; opacity: 0.85; max-width: 32ch; }
+.sheet.cover .motto { margin-top: 4rem; font-family: var(--font-utility); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; color: var(--gold); }
+
+.eyebrow { font-family: var(--font-utility); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+h2 { font-family: var(--font-display); color: var(--leaf-deep); font-size: 1.6rem; margin-top: 0.3rem; }
+h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--leaf-deep); margin-bottom: 0.2rem; }
+p { line-height: 1.65; color: var(--ink-soft); }
+.empty { font-family: var(--font-utility); font-size: 0.8rem; opacity: 0.7; }
+
+.entry { border-left: 2px solid var(--gold); padding-left: 0.9rem; margin-bottom: 1.2rem; page-break-inside: avoid; }
+.era { font-family: var(--font-utility); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+
+.officer { padding: 0.6rem 0; border-bottom: 1px dashed var(--parchment-dark); page-break-inside: avoid; }
+.officer .name { font-family: var(--font-display); font-weight: 600; }
+.officer .position { font-family: var(--font-utility); font-size: 0.75rem; color: var(--gold); text-transform: uppercase; }
+.officer .term { font-size: 0.8rem; opacity: 0.75; }
+
+.timeline-row { display: grid; grid-template-columns: 100px 1fr; gap: 0.6rem; margin-bottom: 0.9rem; page-break-inside: avoid; }
+.timeline-row .date { font-family: var(--font-utility); font-size: 0.75rem; color: var(--leaf); font-weight: 600; }
+
+.date-inline { color: var(--gold); font-family: var(--font-utility); font-size: 0.72rem; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 0.8rem; }
+.stat { border: 1px solid var(--parchment-dark); border-radius: 4px; padding: 0.7rem; page-break-inside: avoid; }
+.stat .value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--leaf-deep); }
+.stat .label { font-family: var(--font-utility); font-size: 0.62rem; text-transform: uppercase; color: var(--gold); }
+
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.7rem; }
+.photo-grid img { width: 100%; height: 140px; object-fit: cover; border-radius: 3px; }
+.photo-grid figcaption { font-family: var(--font-utility); font-size: 0.65rem; color: var(--ink-soft); margin-top: 0.2rem; }
+
+.signature { margin-top: 2rem; font-style: italic; }
+
+@media print {
+  .no-print, .toolbar { display: none !important; }
+  body { background: #fff; }
+  .sheet {
+    box-shadow: none;
+    margin: 0;
+    width: auto;
+    min-height: auto;
+    page-break-after: always;
+  }
+  .sheet:last-child { page-break-after: auto; }
+  @page { size: letter; margin: 0; }
+}

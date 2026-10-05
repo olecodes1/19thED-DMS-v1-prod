@@ -1,0 +1,440 @@
+/* =====================================================================
+   YPD 19th District — History Booklet
+   Design language: a bound archival ledger, not a "web app with a book
+   icon." Deep forest green + aged parchment + gold foil, per YPD's own
+   colors (green = growth/vitality, white = purity/faith) reframed as an
+   archive's palette. Signature element: the stitched spine + moving
+   ribbon bookmark that tracks your place in the booklet.
+   ===================================================================== */
+
+:root {
+  /* --- Color tokens --- */
+  --ink: #1b2e22;
+  --ink-soft: #33473a;
+  --parchment: #f3ede0;
+  --parchment-dark: #e8dfc9;
+  --leaf: #2f5233;
+  --leaf-deep: #1f3823;
+  --leaf-bright: #4f7a54;
+  --gold: #b08d57;
+  --gold-bright: #cba869;
+  --cream: #fbf9f4;
+  --spine-shadow: rgba(15, 22, 15, 0.45);
+
+  /* --- Type tokens --- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-utility: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-page: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #24382a 0%, var(--leaf-deep) 55%, #10190f 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Top bar ---------- */
+.ypd-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  background: var(--leaf-deep);
+  border-bottom: 1px solid rgba(203, 168, 105, 0.35);
+  color: var(--cream);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ypd-topbar .brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.ypd-topbar .brand small {
+  font-family: var(--font-utility);
+  font-size: 0.65rem;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.ypd-topbar .actions a,
+.ypd-topbar .actions button {
+  font-family: var(--font-utility);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid rgba(251, 249, 244, 0.4);
+  border-radius: 2px;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.ypd-topbar .actions a:hover,
+.ypd-topbar .actions button:hover {
+  background: rgba(251, 249, 244, 0.12);
+  border-color: var(--gold-bright);
+}
+
+/* ---------- Book stage ---------- */
+.book-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.book {
+  position: relative;
+  width: min(1000px, 94vw);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 2px 0 rgba(203, 168, 105, 0.2);
+  border-radius: var(--radius-page);
+  overflow: hidden;
+}
+
+/* The stitched spine — signature element */
+.book::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 22px;
+  margin-left: -11px;
+  background: linear-gradient(90deg, transparent, var(--spine-shadow) 45%, var(--spine-shadow) 55%, transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+.book::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  bottom: 6%;
+  width: 2px;
+  margin-left: -1px;
+  background-image: repeating-linear-gradient(180deg, var(--gold-bright) 0 6px, transparent 6px 13px);
+  opacity: 0.6;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.page {
+  flex: 1;
+  background: var(--parchment);
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(176, 141, 87, 0.08), transparent 40%),
+    radial-gradient(circle at 92% 88%, rgba(47, 82, 51, 0.06), transparent 45%);
+  padding: 2.4rem 2.6rem 2rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.page.left { border-right: none; }
+.page.right { }
+
+.page::-webkit-scrollbar { width: 8px; }
+.page::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+/* Chapter index tabs — ledger-style, stuck to the right edge */
+.chapter-tabs {
+  position: absolute;
+  right: -1px;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+
+.chapter-tab {
+  font-family: var(--font-utility);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--leaf);
+  border: none;
+  border-radius: 2px 0 0 2px;
+  padding: 0.5rem 0.55rem;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  box-shadow: -2px 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.15s ease, background 0.15s ease;
+  transform: translateX(0);
+}
+.chapter-tab:hover { transform: translateX(-4px); }
+.chapter-tab.active {
+  background: var(--gold);
+  color: var(--leaf-deep);
+  transform: translateX(-8px);
+}
+
+/* Ribbon bookmark — tracks current chapter position visually */
+.ribbon {
+  position: absolute;
+  top: -8px;
+  width: 26px;
+  background: linear-gradient(180deg, var(--leaf-bright), var(--leaf));
+  height: 70px;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: left 0.35s ease;
+  z-index: 4;
+  left: 40px;
+}
+
+/* ---------- Typography inside pages ---------- */
+.page h1, .page h2, .page h3 {
+  font-family: var(--font-display);
+  color: var(--leaf-deep);
+  margin-top: 0;
+}
+
+.page .eyebrow {
+  font-family: var(--font-utility);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.page h1 { font-size: 2rem; font-weight: 600; }
+.page h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.75rem; }
+.page p { line-height: 1.7; color: var(--ink-soft); }
+
+.page-number {
+  position: absolute;
+  bottom: 0.9rem;
+  font-family: var(--font-utility);
+  font-size: 0.7rem;
+  color: var(--gold);
+}
+.page.left .page-number { left: 2.6rem; }
+.page.right .page-number { right: 2.6rem; }
+
+/* ---------- Cover page ---------- */
+.cover-page {
+  background: linear-gradient(160deg, var(--leaf-deep), var(--leaf) 60%, var(--leaf-deep));
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+  position: relative;
+}
+.cover-page .district-label {
+  font-family: var(--font-utility);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 1rem;
+}
+.cover-page h1 {
+  font-family: var(--font-display);
+  color: var(--cream);
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  line-height: 1.12;
+  margin: 0 0 0.75rem;
+}
+.cover-page .subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: rgba(251,249,244,0.82);
+  font-size: 1.05rem;
+  max-width: 34ch;
+}
+.cover-page .motto {
+  margin-top: auto;
+  font-family: var(--font-utility);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-top: 1px solid rgba(203,168,105,0.35);
+  padding-top: 0.9rem;
+}
+
+/* Cover photo — selected in admin (Booklet Information > Cover Photo) */
+.cover-photo {
+  width: 100%;
+  height: 0;
+  padding-bottom: 52%;
+  border-radius: 3px;
+  border: 1px solid rgba(203, 168, 105, 0.5);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1.4rem;
+}
+
+/* ---------- Content components ---------- */
+.entry-block {
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+.entry-block .era { font-family: var(--font-utility); font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.officer-card {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px dashed var(--parchment-dark);
+}
+.officer-card .thumb {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--parchment-dark);
+  background-size: cover; background-position: center;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+}
+.officer-card .name { font-family: var(--font-display); font-weight: 600; color: var(--leaf-deep); }
+.officer-card .position { font-family: var(--font-utility); font-size: 0.72rem; color: var(--gold); text-transform: uppercase; }
+.officer-card .term { font-size: 0.78rem; color: var(--ink-soft); opacity: 0.8; }
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+.timeline-item .date {
+  font-family: var(--font-utility);
+  font-size: 0.75rem;
+  color: var(--leaf);
+  font-weight: 600;
+  padding-top: 0.1rem;
+}
+.timeline-item .dot-line { position: relative; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+.stat-card {
+  background: var(--cream);
+  border: 1px solid var(--parchment-dark);
+  border-radius: 4px;
+  padding: 0.9rem;
+  text-align: left;
+}
+.stat-card .value {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--leaf-deep);
+}
+.stat-card .label {
+  font-family: var(--font-utility);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+.gallery-grid img {
+  width: 100%; height: 110px; object-fit: cover;
+  border-radius: 3px; border: 1px solid var(--parchment-dark);
+}
+
+.empty-note {
+  font-family: var(--font-utility);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  border: 1px dashed var(--parchment-dark);
+  padding: 0.9rem;
+  border-radius: 4px;
+}
+
+/* §5.2 — retry button shown inside failed chapters */
+.retry-btn {
+  font-family: var(--font-utility);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--leaf-deep);
+  background: var(--gold-bright);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  padding: 0.35rem 0.8rem;
+  margin-top: 0.6rem;
+  cursor: pointer;
+}
+.retry-btn:hover { filter: brightness(1.05); }
+
+/* §5.3 — visible keyboard focus for tab-like controls */
+.chapter-tab:focus-visible,
+.turn-btn:focus-visible,
+.retry-btn:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+/* ---------- Nav arrows ---------- */
+.turn-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--leaf-deep);
+  color: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  width: 42px; height: 42px;
+  cursor: pointer;
+  z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+.turn-btn.prev { left: -21px; }
+.turn-btn.next { right: -21px; }
+.turn-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* ---------- Responsive: stack to a single page on small screens ---------- */
+@media (max-width: 760px) {
+  .book { aspect-ratio: auto; height: 78vh; }
+  .book::before, .book::after { display: none; }
+  .page.left { display: none; }
+  .page.right { border-left: none; }
+  .chapter-tabs { top: auto; bottom: 4px; right: 4px; flex-direction: row; }
+  .chapter-tab { writing-mode: horizontal-tb; border-radius: 2px; }
+}

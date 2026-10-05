@@ -1,0 +1,174 @@
+[2026-08-18 18:57:43] [TEST] This is a test error message
+Request: UNKNOWN UNKNOWN
+IP: UNKNOWN
+
+--------------------------------------------------------------------------------
+[2026-08-18 18:57:43] [DATABASE] Query failed: SELECT * FROM test_table
+Error: Table doesn't exist
+Params: []
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:53:50] UNHANDLED EXCEPTION: Call to a member function prepare() on true in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_login.php on line 25
+Stack trace:
+#0 {main}
+Request: UNKNOWN UNKNOWN
+IP: UNKNOWN
+User Agent: UNKNOWN
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:53:50] FATAL ERROR: Uncaught ErrorException: http_response_code(): Cannot set response code - headers already sent (output started at /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_login.php:21) in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:143
+Stack trace:
+#0 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:23}(2, 'http_response_c...', '/Applications/X...', 143)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(143): http_response_code(500)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(61): showErrorPage('Application Err...', 'An unexpected e...', NULL)
+#3 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:36}(Object(Error))
+#4 {main}
+  thrown in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php on line 143
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:57:10] UNHANDLED EXCEPTION: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php on line 10) in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/session.php on line 13
+Stack trace:
+#0 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:23}(2, 'ini_set(): Sess...', '/Applications/X...', 13)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/session.php(13): ini_set('session.use_str...', 1)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/auth.php(15): require_once('/Applications/X...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/bootstrap.php(31): require_once('/Applications/X...')
+#4 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php(14): require('/Applications/X...')
+#5 {main}
+Request: UNKNOWN UNKNOWN
+IP: UNKNOWN
+User Agent: UNKNOWN
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:57:10] FATAL ERROR: Uncaught ErrorException: http_response_code(): Cannot set response code - headers already sent (output started at /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php:10) in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:143
+Stack trace:
+#0 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:23}(2, 'http_response_c...', '/Applications/X...', 143)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(143): http_response_code(500)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(61): showErrorPage('Application Err...', 'An unexpected e...', NULL)
+#3 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:36}(Object(ErrorException))
+#4 {main}
+  thrown in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php on line 143
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:57:21] UNHANDLED EXCEPTION: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php on line 13) in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/session.php on line 13
+Stack trace:
+#0 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:23}(2, 'ini_set(): Sess...', '/Applications/X...', 13)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/session.php(13): ini_set('session.use_str...', 1)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/auth.php(15): require_once('/Applications/X...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/bootstrap.php(31): require_once('/Applications/X...')
+#4 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php(17): require('/Applications/X...')
+#5 {main}
+Request: UNKNOWN UNKNOWN
+IP: UNKNOWN
+User Agent: UNKNOWN
+
+--------------------------------------------------------------------------------
+[2026-09-28 18:57:21] FATAL ERROR: Uncaught ErrorException: http_response_code(): Cannot set response code - headers already sent (output started at /Applications/XAMPP/xamppfiles/htdocs/AdminDash/test_bootstrap.php:13) in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:143
+Stack trace:
+#0 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:23}(2, 'http_response_c...', '/Applications/X...', 143)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(143): http_response_code(500)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php(61): showErrorPage('Application Err...', 'An unexpected e...', NULL)
+#3 [internal function]: {closure:/Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php:36}(Object(ErrorException))
+#4 {main}
+  thrown in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/includes/error_handler.php on line 143
+
+--------------------------------------------------------------------------------
+[2026-09-28 21:57:48] [LOGIN] Failed login attempt for username: superadmin
+Request: POST /AdminDash/actions/process_login.php
+IP: ::1
+
+--------------------------------------------------------------------------------
+[2026-09-28 21:59:48] [LOGIN] Failed login attempt for username: superadmin
+Request: POST /AdminDash/actions/process_login.php
+IP: ::1
+
+--------------------------------------------------------------------------------
+[2026-09-28 22:00:32] [LOGIN] Failed login attempt for username: superadmin
+Request: POST /AdminDash/actions/process_login.php
+IP: ::1
+
+--------------------------------------------------------------------------------
+[2026-09-28 22:09:13] UNHANDLED EXCEPTION: Undefined variable $hasAttendance in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php on line 27
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php(27): {closure}(2, 'Undefined varia...', '/Applications/X...', 27)
+#1 {main}
+Request: GET /AdminDash/views/events.php
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-09-28 22:11:05] UNHANDLED EXCEPTION: Undefined variable $hasAttendance in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php on line 27
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php(27): {closure}(2, 'Undefined varia...', '/Applications/X...', 27)
+#1 {main}
+Request: GET /AdminDash/views/events.php
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-09-28 22:11:21] UNHANDLED EXCEPTION: Undefined variable $hasAttendance in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php on line 27
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php(27): {closure}(2, 'Undefined varia...', '/Applications/X...', 27)
+#1 {main}
+Request: GET /AdminDash/views/events.php
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-09-28 22:11:52] UNHANDLED EXCEPTION: Undefined variable $hasAttendance in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php on line 27
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/events.php(27): {closure}(2, 'Undefined varia...', '/Applications/X...', 27)
+#1 {main}
+Request: GET /AdminDash/views/events.php
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-10-01 09:42:23] UNHANDLED EXCEPTION: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ch.zero_member_churches' in 'field list' in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/statistical_reports.php on line 60
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/views/statistical_reports.php(60): PDO->prepare('SELECT c.confer...')
+#1 {main}
+Request: GET /AdminDash/views/statistical_reports.php
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-10-01 12:54:51] UNHANDLED EXCEPTION: Undefined variable $componentChartData in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php on line 112
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php(112): {closure}(2, 'Undefined varia...', '/Applications/X...', 112)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/index.php(24): include('/Applications/X...')
+#2 {main}
+Request: GET /AdminDash/public_website/index.php?page=dashboard
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-10-01 12:55:01] UNHANDLED EXCEPTION: Undefined variable $componentChartData in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php on line 112
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php(112): {closure}(2, 'Undefined varia...', '/Applications/X...', 112)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/index.php(24): include('/Applications/X...')
+#2 {main}
+Request: GET /AdminDash/public_website/index.php?page=dashboard
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-10-01 12:56:27] UNHANDLED EXCEPTION: Undefined variable $componentChartData in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php on line 112
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/dashboard.php(112): {closure}(2, 'Undefined varia...', '/Applications/X...', 112)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/index.php(24): include('/Applications/X...')
+#2 {main}
+Request: GET /AdminDash/public_website/index.php?page=dashboard
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
+[2026-10-01 13:01:32] UNHANDLED EXCEPTION: Undefined variable $areas in /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/areas.php on line 18
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/pages/areas.php(18): {closure}(2, 'Undefined varia...', '/Applications/X...', 18)
+#1 /Applications/XAMPP/xamppfiles/htdocs/AdminDash/public_website/index.php(24): include('/Applications/X...')
+#2 {main}
+Request: GET /AdminDash/public_website/index.php?page=areas
+IP: ::1
+User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0
+
+--------------------------------------------------------------------------------
